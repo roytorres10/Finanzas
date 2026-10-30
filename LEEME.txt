@@ -1,0 +1,45 @@
+FINANZAS+ — APLICACIÓN MÓVIL (PWA)
+===================================
+
+Contenido:
+- index.html: aplicación.
+- manifest.webmanifest: configuración de instalación.
+- service-worker.js: caché para funcionamiento sin conexión.
+- icon-192.png e icon-512.png: iconos de la app.
+
+IMPORTANTE:
+Una PWA instalable necesita abrirse desde HTTPS (o localhost para pruebas).
+No basta con abrir index.html directamente desde el administrador de archivos:
+en ese caso la app funciona como página web, pero el navegador no habilita
+la instalación PWA ni el service worker.
+
+PUBLICAR E INSTALAR:
+1. Sube TODOS los archivos de esta carpeta a un hosting estático HTTPS
+   (por ejemplo, GitHub Pages o un hosting estático propio).
+2. Abre la dirección HTTPS desde Chrome en Android.
+3. Pulsa “Instalar” si aparece, o menú ⋮ > Instalar aplicación.
+4. En iPhone/iPad, abre la dirección con Safari > Compartir > Añadir a pantalla de inicio.
+5. Abre Finanzas+ desde el icono instalado.
+
+USO LOCAL EN UNA COMPUTADORA:
+Para pruebas desde la carpeta, ejecuta en ella:
+  python -m http.server 8000
+y abre http://localhost:8000 en esa computadora.
+Para instalar desde un teléfono, la publicación debe estar en HTTPS.
+
+DATOS Y PRIVACIDAD:
+- Los movimientos y preferencias se guardan en el almacenamiento local del
+  navegador (LocalStorage); los documentos se guardan en IndexedDB.
+- El service worker guarda la interfaz para poder abrirla sin conexión
+  después de la primera visita online.
+- Los datos no se sincronizan entre teléfono y computadora.
+- Antes de cambiar desde la versión HTML anterior a esta PWA, exporta un
+  respaldo JSON desde Configuración. El almacenamiento del archivo local
+  y el del nuevo dominio HTTPS son espacios distintos.
+- Mantén respaldos periódicos. Borrar los datos del navegador puede borrar
+  los registros y documentos.
+
+NOTA:
+Esta entrega es una aplicación web progresiva (PWA), no un APK de Android
+ni una app nativa de App Store. Se instala desde el navegador y puede
+ejecutarse a pantalla completa.
